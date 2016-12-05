@@ -20,4 +20,8 @@ public class Defenseur extends Joueur {
     public String toString(){
         return "D";
     }
+    
+    public Defenseur(Position positionInitiale, Equipe equipe){
+        super();
+    }
 } 
