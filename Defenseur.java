@@ -22,6 +22,6 @@ public class Defenseur extends Joueur {
     }
     
     public Defenseur(Position positionInitiale, Equipe equipe){
-        super();
+        super(positionInitiale, equipe);
     }
 } 
