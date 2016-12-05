@@ -43,7 +43,33 @@ public class Position {
     }
     
     public Direction seDirigerVers(Position p){
-        
+        if (ligne == p.ligne && colonne == p.colonne){
+            return new Direction(0,0);
+        }
+        else if(ligne == p.ligne && colonne < p.colonne){
+            return new Direction(1,0);
+        }
+        else if(ligne == p.ligne && colonne > p.colonne){
+            return new Direction(-1,0);
+        }
+        else if(ligne < p.ligne && colonne == p.colonne){
+            return new Direction(0,1);
+        }
+        else if(ligne > p.ligne && colonne == p.colonne){
+            return new Direction(0,-1);
+        }
+        else if(ligne > p.ligne && colonne > p.colonne){
+            return new Direction(-1,1);
+        }
+        else if(ligne < p.ligne && colonne < p.colonne){
+            return new Direction(1,-1);
+        }
+        else if(ligne < p.ligne && colonne > p.colonne){
+            return new Direction(-1,-1);
+        }
+        else if(ligne > p.ligne && colonne < p.colonne){
+            return new Direction(1,1);
+        }
         
     }
 }

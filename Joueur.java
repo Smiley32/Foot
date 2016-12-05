@@ -42,11 +42,11 @@ public abstract class Joueur implements Playable {
     //ajouter la fonction déplacement() et la fonction shoote()
     
     public Direction shoote(){
-        return Direction(rand(0,2)-1,rand(0,2)-1);
+        return new Direction(rand(0,2)-1,rand(0,2)-1);
     }
     
-    public Direction deplacement(){
-        return Direction(rand(0,2)-1,rand(0,2)-1);
+    public Direction deplacement(Ballon ballon){
+        return new Direction(rand(0,2)-1,rand(0,2)-1);
     }
     
 

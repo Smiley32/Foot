@@ -3,17 +3,17 @@ public class Defenseur extends Joueur {
     
     public Direction shoote (){
         if (equipe.getPositionBut().getLigne() < pos.getLigne()){
-            return Direction(0,-1);
+            return new Direction(0,-1);
         }
-        return Direction(0,1);
+        return new Direction(0,1);
     }
     
     public Direction deplacement(Ballon ballon){
         if (pos.distanceAvec(ballon.getPosition()) < 4){
-            return Direction(,);
+            return new pos.seDirigerVers(ballon.getPosition());
         }
         else{
-            return Direction(-1,0);
+            return new pos.seDirigerVers(equipe.getPositionBut());
         }
     }
     

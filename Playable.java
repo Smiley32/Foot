@@ -1,6 +1,6 @@
 public interface Playable {
     public Direction shoote();
-    public Direction deplacement();
+    public Direction deplacement(Ballon ballon);
     public String toString();
     public boolean rencontreBalle();
     public void marqueBut();
