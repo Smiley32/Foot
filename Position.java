@@ -37,4 +37,9 @@ public class Position {
     public int getColonne(){
         return this.colonne;
     }
+    
+    public Direction seDirigerVers(Position p){
+        
+        
+    }
 }

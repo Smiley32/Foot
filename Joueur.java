@@ -49,9 +49,6 @@ public abstract class Joueur implements Playable {
         return Direction(rand(0,2)-1,rand(0,2)-1);
     }
     
-    public Direction seDirigerVers(Position p){
-        
-        
-    }
+
     
 }
