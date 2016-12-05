@@ -10,10 +10,10 @@ public class Defenseur extends Joueur {
     
     public Direction deplacement(Ballon ballon){
         if (pos.distanceAvec(ballon.getPosition()) < 4){
-            return new pos.seDirigerVers(ballon.getPosition());
+            return pos.seDirigerVers(ballon.getPosition());
         }
         else{
-            return new pos.seDirigerVers(equipe.getPositionBut());
+            return pos.seDirigerVers(equipe.getPositionBut());
         }
     }
     
