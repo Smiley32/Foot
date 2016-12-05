@@ -6,4 +6,5 @@ public interface Playable {
     public void marqueBut();
     public Position getPosition();
     public void setPosition(Position p);
+    public void setPosition();
 }

@@ -29,4 +29,12 @@ public class Position {
     public double distanceAvec(Position p) {
         return Math.sqrt((p.ligne - this.ligne) * (p.ligne - this.ligne) + (p.colonne - this.colonne) * (p.colonne - this.colonne));
     }
+    
+    public int getLigne(){
+        return this.ligne;
+    }
+    
+    public int getColonne(){
+        return this.colonne;
+    }
 }
