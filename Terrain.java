@@ -64,18 +64,18 @@ public class Terrain {
         }
         
         // Mise à jour du ballon
-        this.b.setPosition(this.b.getPosition.ajout(this.b.getDirection()));
+        this.b.setPosition(this.b.getPosition().ajout(this.b.getDirection()));
         
         // Pour ne bouger la balle qu'une seule fois
         boolean balleBougee = false;
         // Mise à jour de la liste
         for(int i = 0; i < liste.size(); i++) {
-            liste.get(i).setPosition(liste.get(i).getPosition().ajout(liste.get(i).deplacement()));
+            liste.get(i).setPosition(liste.get(i).getPosition().ajout(liste.get(i).deplacement(b)));
             // Ajouter les verifications de collision
             
             if(liste.get(i).rencontreBalle(b) && !balleBougee) {
                 balleBougee = true;
-                this.b.setPosition(this.b.getPosition.ajout(liste.get(i).shoote()));
+                this.b.setPosition(this.b.getPosition().ajout(liste.get(i).shoote()));
                 // Ajouter les tests de collisions
             }
         }
@@ -124,14 +124,22 @@ public class Terrain {
             }
             
             // Affichage du carac de limite droite
-            System.out.print("#");
+            System.out.print("#\n");
         }
-        System.out.print("\n");
         
         // Affichage de la limite sud
         for(int i = 0; i < nbColonnes + 2; i++) {
             System.out.print("#");
         }
         System.out.print("\n");
+    }
+    
+    public static void main(String[] args) {
+        Terrain jeu = new Terrain();
+        jeu.affichage();
+        jeu.update();
+        jeu.affichage();
+        jeu.update();
+        jeu.affichage();
     }
 }

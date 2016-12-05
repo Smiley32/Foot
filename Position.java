@@ -67,7 +67,7 @@ public class Position {
         else if(ligne < p.ligne && colonne > p.colonne){
             return new Direction(-1,-1);
         }
-        else if(ligne > p.ligne && colonne < p.colonne){
+        else /*(ligne > p.ligne && colonne < p.colonne)*/{
             return new Direction(1,1);
         }
         
