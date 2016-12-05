@@ -38,6 +38,10 @@ public class Position {
         return this.colonne;
     }
     
+    public Position ajout(Direction d) {
+        return new Position(this.ligne + d.getY(), this.colonne + d.getX());
+    }
+    
     public Direction seDirigerVers(Position p){
         
         
