@@ -4,4 +4,8 @@ public class Equipe {
     public int getButsMarques() {
         return butsMarques;
     }
+    
+    public void ajouterBut(){
+        this.butsMarques += 1;
+    }
 }
