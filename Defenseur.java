@@ -17,8 +17,8 @@ public class Defenseur extends Joueur {
         }
     }*/
     
-    public String toString(){
-        return "D";
+    public String toString() {
+        return Outils.beginColor(equipe.getColor()) + "D" + Outils.endColor();
     }
     
     public Defenseur(Position positionInitiale, Equipe equipe){

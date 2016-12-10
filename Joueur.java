@@ -1,10 +1,5 @@
 public abstract class Joueur implements Playable {
     
-    
-    private static int rand(int min, int max) {
-        return (int)(Math.random() * (max - min -1)) + min;
-    }
-    
     private Position positionInitiale;
     // Position actuelle du joueur
     protected Position pos;
@@ -14,6 +9,7 @@ public abstract class Joueur implements Playable {
     public Joueur(Position positionInitiale, Equipe equipe){
         this.positionInitiale = positionInitiale;
         this.pos = positionInitiale;
+        this.equipe = equipe;
     }
     
     public Position getPosition() {
@@ -32,7 +28,7 @@ public abstract class Joueur implements Playable {
     }
     
     public void marqueBut(){
-        this.equipe.ajouterBut();
+        // this.equipe.ajouterBut();
     }
     
     public void setPosition() {
@@ -42,11 +38,11 @@ public abstract class Joueur implements Playable {
     //ajouter la fonction déplacement() et la fonction shoote()
     
     public Direction shoote(){
-        return new Direction(rand(0,2)-1,rand(0,2)-1);
+        return new Direction(Outils.rand(0,2)-1, Outils.rand(0,2)-1);
     }
     
-    public Direction deplacement(Ballon ballon){
-        return new Direction(rand(0,2)-1,rand(0,2)-1);
+    public Direction deplacement(){
+        return new Direction(Outils.rand(0,2)-1, Outils.rand(0,2)-1);
     }
     
 

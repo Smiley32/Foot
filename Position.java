@@ -30,14 +30,25 @@ public class Position {
         return Math.sqrt((p.ligne - this.ligne) * (p.ligne - this.ligne) + (p.colonne - this.colonne) * (p.colonne - this.colonne));
     }
     
+    /**
+     * Récupère la ligne
+     */
     public int getLigne(){
         return this.ligne;
     }
     
+    /**
+     * Récupère la colonne
+     */
     public int getColonne(){
         return this.colonne;
     }
     
+    /**
+     * Incremente la Position dans la direction voulue
+     *
+     * @param Direction     La Direction dans laquelle incrémenter
+     */
     public Position ajout(Direction d) {
         return new Position(this.ligne + d.getY(), this.colonne + d.getX());
     }
