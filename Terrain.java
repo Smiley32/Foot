@@ -60,7 +60,7 @@ public class Terrain {
         e2 = new Equipe(new Position(this.nbLignes - 1, this.nbColonnes / 2), "blue");
         
         // Création des joueurs
-        Attaquant d1e1 = new Attaquant(this, new Position(1,1), e1);
+        Attaquant d1e1 = new Attaquant(this, new Position(1, 1), e1);
         Attaquant d2e1 = new Attaquant(this, new Position(1, nbC - 2), e1);
         Attaquant d1e2 = new Attaquant(this, new Position(nbL - 2, 1), e2);
         Attaquant d2e2 = new Attaquant(this, new Position(nbL - 2, nbC - 2), e2);
