@@ -107,11 +107,18 @@ public class Terrain {
         // Mise à jour du ballon
         Position newPosBallon = this.b.getPosition().ajout(this.b.getDirection());
         
-        
+        /*
+        // Si la balle sort, on la fait rebondir
         if(newPosBallon.getLigne() < 0 || newPosBallon.getLigne() >= nbLignes) {
             this.b.setDirection(new Direction(this.b.getDirection().getX(), -this.b.getDirection().getY()));
         } else if(newPosBallon.getColonne() < 0 || newPosBallon.getColonne() >= nbColonnes) {
             this.b.setDirection(new Direction(-this.b.getDirection().getX(), this.b.getDirection().getY()));
+        }*/
+        
+        // Si la balle sort du terrain, elle est en touche et est renvoyée aléatoirement dans le terrain
+        if(newPosBallon.getLigne() < 0 || newPosBallon.getLigne() >= nbLignes || newPosBallon.getColonne() < 0 || newPosBallon.getColonne() >= nbColonnes) {
+            this.b.setPosition(new Position(Outils.rand(0, nbLignes - 1), Outils.rand(0, nbColonnes)));
+            this.b.setDirection(new Direction(Outils.rand(-1,1), Outils.rand(-1,1)));
         }
         
         this.b.setPosition(this.b.getPosition().ajout(this.b.getDirection()));
