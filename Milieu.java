@@ -14,7 +14,7 @@ public class Milieu extends Joueur {
         } else if (pos.distanceAvec(positionInitiale)) == 0 {
              return new Direction(-1,0);
         } else {
-            return new Direction(Outils.rand(-1, 1), Outils.rand(-1, 1));
+            return new Direction(Outils.rand(-1,1), Outils.rand(-1, 1));
         }
     }
     
