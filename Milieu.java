@@ -8,7 +8,7 @@ public class Milieu extends Joueur {
         return new Direction(0,-1);
     }
     
-    public Direction deplacement() {
+    public Direction deplacement() { 
         if(pos.distanceAvec(this.t.getBallon().getPosition()) < 3){
             return pos.seDirigerVers(positionInitiale);
         } else if (pos.distanceAvec(positionInitiale)) == 0 {
