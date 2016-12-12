@@ -3,9 +3,9 @@ public class Attaquant extends Joueur {
     
     public Direction shoote(){
         if(equipe.getPositionBut().getLigne() < pos.getLigne()) {
-            return new Direction(0,-1);
+            return new Direction(0,1);
         }
-        return new Direction(0,1);
+        return new Direction(0,-1);
     }
     
     public Direction deplacement() {

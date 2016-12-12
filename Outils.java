@@ -75,7 +75,6 @@ public class Outils {
         if(os.contains("Windows")) {
             ret = "";
         } else {
-            ln("LINUX");
             // Effacer la console mac/linux
             switch(color) {
                 case "blue":
