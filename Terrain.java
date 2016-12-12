@@ -13,6 +13,10 @@ public class Terrain {
     private Equipe e1;
     private Equipe e2;
     
+    public Ballon getBallon() {
+        return this.b;
+    }
+    
     /**
      * Création d'un terrain par défaut
      */
@@ -53,27 +57,31 @@ public class Terrain {
         
         // Création des équipes
         e1 = new Equipe(new Position(0, this.nbColonnes / 2), "red");
-        e2 = new Equipe(new Position(this.nbLignes + 2, this.nbColonnes / 2), "blue");
+        e2 = new Equipe(new Position(this.nbLignes - 1, this.nbColonnes / 2), "blue");
         
         // Création des joueurs
-        Defenseur d1e1 = new Defenseur(new Position(1,1), e1);
-        Defenseur d2e1 = new Defenseur(new Position(1, nbC - 2), e1);
-        Defenseur d1e2 = new Defenseur(new Position(nbL - 2, 1), e2);
-        Defenseur d2e2 = new Defenseur(new Position(nbL - 2, nbC - 2), e2);
-        Troll t1 = new Troll(new Position(2, 2));
-        Troll t2 = new Troll(new Position(3, 2));
+        Attaquant d1e1 = new Attaquant(this, new Position(1,1), e1);
+        Attaquant d2e1 = new Attaquant(this, new Position(1, nbC - 2), e1);
+        Attaquant d1e2 = new Attaquant(this, new Position(nbL - 2, 1), e2);
+        Attaquant d2e2 = new Attaquant(this, new Position(nbL - 2, nbC - 2), e2);
+        Troll t1 = new Troll(this, new Position(2, 2));
+        Troll t2 = new Troll(this, new Position(3, 2));
+        Troll t3 = new Troll(this, new Position(2, 3));
+        Troll t4 = new Troll(this, new Position(4, 4));
         
         this.liste = new ArrayList<Playable>();
         this.liste.add(d1e1);
         this.liste.add(d1e2);
         this.liste.add(d2e1);
         this.liste.add(d2e2);
-        this.liste.add(new Defenseur(new Position(1,1), e1));
-        this.liste.add(new Defenseur(new Position(1, nbC - 2), e1));
-        this.liste.add(new Defenseur(new Position(nbL - 2, 1), e2));
-        this.liste.add(new Defenseur(new Position(nbL - 2, nbC - 2), e2));
+        this.liste.add(new Attaquant(this, new Position(1,3), e1));
+        this.liste.add(new Attaquant(this, new Position(1, nbC - 4), e1));
+        this.liste.add(new Attaquant(this, new Position(nbL - 2, 3), e2));
+        this.liste.add(new Attaquant(this, new Position(nbL - 2, nbC - 4), e2));
         this.liste.add(t1);
         this.liste.add(t2);
+        this.liste.add(t3);
+        this.liste.add(t4);
     }
     
     /**
@@ -154,14 +162,12 @@ public class Terrain {
                 
                 // Ajouter les verifications de collision
                 
-                if(liste.get(i).rencontreBalle(b) && !balleBougee) {
+                if(liste.get(i).rencontreBalle() && !balleBougee) {
                     balleBougee = true;
                     Direction dirShoote = liste.get(i).shoote();
                     this.b.setDirection(dirShoote);
                     this.b.setDerniereFrappe(liste.get(i));
                     // this.b.setPosition(this.b.getPosition().ajout(dirShoote));
-                    
-                    // Ajouter les tests de collisions
                 }
             }
         }
@@ -246,6 +252,9 @@ public class Terrain {
         
         // Affichage du score
         Outils.ln("Score : [" + e1 + " - " + e2 + "]");
+        
+        // Affichage du temps
+        Outils.ln("Temps : " + tempsJeu/60 + ":" + tempsJeu%60);
     }
     
     
@@ -253,12 +262,13 @@ public class Terrain {
     public static void main(String[] args) {
         Terrain jeu = new Terrain();
         int update = 0;
-        int tempsJeuMax = 180;
+        int tempsJeuMax = 5400;
         while(jeu.getTempsJeu() < tempsJeuMax) {
         
             Outils.pause(100);
             
             Outils.effacerConsole();
+            
             jeu.affichage();
             update = jeu.update();
             if(update == 1) {

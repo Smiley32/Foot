@@ -1,15 +1,16 @@
 public abstract class Joueur implements Playable {
     
-    private Position positionInitiale;
+    protected Position positionInitiale;
     // Position actuelle du joueur
     protected Position pos;
     protected Equipe equipe;
-   
+    protected Terrain t;
     
-    public Joueur(Position positionInitiale, Equipe equipe){
+    public Joueur(Terrain t, Position positionInitiale, Equipe equipe){
         this.positionInitiale = positionInitiale;
         this.pos = positionInitiale;
         this.equipe = equipe;
+        this.t = t;
     }
     
     public Position getPosition() {
@@ -20,11 +21,8 @@ public abstract class Joueur implements Playable {
         this.pos = p;
     }
     
-    public boolean rencontreBalle(Ballon ballon){
-        if (pos.distanceAvec (ballon.getPosition()) == 0) 
-            return true;
-        else 
-            return false;
+    public boolean rencontreBalle(){
+        return pos.distanceAvec(this.t.getBallon().getPosition()) == 0;
     }
     
     public void marqueBut(){

@@ -1,8 +1,10 @@
 public class Troll implements Playable {
     private Position pos;
+    private Terrain t;
     
-    public Troll(Position posInit) {
+    public Troll(Terrain t, Position posInit) {
         this.pos = posInit;
+        this.t = t;
     }
 
     public Direction shoote() {
@@ -17,11 +19,8 @@ public class Troll implements Playable {
         return Outils.beginColor("green") + "T" + Outils.endColor();
     }
     
-    public boolean rencontreBalle(Ballon ballon) {
-        if (pos.distanceAvec (ballon.getPosition()) == 0) 
-            return true;
-        else 
-            return false;
+    public boolean rencontreBalle() {
+        return pos.distanceAvec(this.t.getBallon().getPosition()) == 0;
     }
     
     public void marqueBut() {

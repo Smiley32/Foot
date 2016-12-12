@@ -53,34 +53,31 @@ public class Position {
         return new Position(this.ligne + d.getY(), this.colonne + d.getX());
     }
     
+    /**
+     * Renvoie la direction de la position en paramètre
+     *
+     * @param p     Position du point vers lequel se diriger
+     * @return      Direction du point
+     */
     public Direction seDirigerVers(Position p){
-        if (ligne == p.ligne && colonne == p.colonne){
-            return new Direction(0,0);
-        }
-        else if(ligne == p.ligne && colonne < p.colonne){
-            return new Direction(1,0);
-        }
-        else if(ligne == p.ligne && colonne > p.colonne){
-            return new Direction(-1,0);
-        }
-        else if(ligne < p.ligne && colonne == p.colonne){
-            return new Direction(0,1);
-        }
-        else if(ligne > p.ligne && colonne == p.colonne){
-            return new Direction(0,-1);
-        }
-        else if(ligne > p.ligne && colonne > p.colonne){
-            return new Direction(-1,1);
-        }
-        else if(ligne < p.ligne && colonne < p.colonne){
-            return new Direction(1,-1);
-        }
-        else if(ligne < p.ligne && colonne > p.colonne){
-            return new Direction(-1,-1);
-        }
-        else /*(ligne > p.ligne && colonne < p.colonne)*/{
-            return new Direction(1,1);
+        int dirX, dirY;
+        
+        if(this.getColonne() < p.getColonne()) {
+            dirX = 1;
+        } else if(this.getColonne() == p.getColonne()) {
+            dirX = 0;
+        } else {
+            dirX = -1;
         }
         
+        if(this.getLigne() < p.getLigne()) {
+            dirY = 1;
+        } else if(this.getLigne() == p.getLigne()) {
+            dirY = 0;
+        } else {
+            dirY = -1;
+        }
+        
+        return new Direction(dirX, dirY);
     }
 }
