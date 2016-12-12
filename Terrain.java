@@ -101,7 +101,8 @@ public class Terrain {
         }
         
         for(int i = 0; i < liste.size(); i++) {
-            grille[liste.get(i).getPosition().getLigne()][liste.get(i).getPosition().getColonne()] = liste.get(i);
+            if(grille[liste.get(i).getPosition().getLigne()][liste.get(i).getPosition().getColonne()] == null)
+                grille[liste.get(i).getPosition().getLigne()][liste.get(i).getPosition().getColonne()] = liste.get(i);
         }
         
         // Mise à jour du ballon
