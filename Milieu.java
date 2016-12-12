@@ -15,7 +15,7 @@ public class Milieu extends Joueur {
              return new Direction(-1,0);
         } else {
             return new Direction(Outils.rand(-1,1), Outils.rand(-1, 1));
-        }
+        } 
     }
     
     public String toString() {
