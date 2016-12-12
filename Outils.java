@@ -1,5 +1,7 @@
 public class Outils {
 
+    private static String os = System.getProperty("os.name");
+
     /**
      * Génère un nombre aléatoire entre un minimum et un maximum (entier)
      *
@@ -14,7 +16,6 @@ public class Outils {
      * Efface la console
      */
     public static void effacerConsole() {
-        String os = System.getProperty("os.name");
         
         try {
             if(os.contains("Windows")) {
@@ -69,21 +70,29 @@ public class Outils {
      * @param String    Le nom de la couleur : (blue, red...)
      */
     public static String beginColor(String color) {
-        String ret;
-        switch(color) {
-            case "blue":
-                ret = (char)27 + "[34;1m";
-                break;
-            case "red":
-                ret = (char)27 + "[31;1m";
-                break;
-            case "green":
-                ret = (char)27 + "[32;1m";
-                break;
-            default:
-                ret = "";
-                break;
+        String ret = "";
+        
+        if(os.contains("Windows")) {
+            ret = "";
+        } else {
+            ln("LINUX");
+            // Effacer la console mac/linux
+            switch(color) {
+                case "blue":
+                    ret = (char)27 + "[34;1m";
+                    break;
+                case "red":
+                    ret = (char)27 + "[31;1m";
+                    break;
+                case "green":
+                    ret = (char)27 + "[32;1m";
+                    break;
+                default:
+                    ret = "";
+                    break;
+            }
         }
+        
         return ret;
     }
     
@@ -91,6 +100,10 @@ public class Outils {
      * Création d'une chaine permettant d'arrêter toutes les couleurs définies
      */
     public static String endColor() {
-        return (char)27 + "[0m";
+        if(os.contains("Windows")) {
+            return "";
+        } else {
+            return (char)27 + "[0m";
+        }
     }
 }
